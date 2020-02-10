@@ -6,14 +6,10 @@ class ListManager:
     def addToList(self, name):
         entryToAdd = BuildEntry()
         currentRegressionListLength = self.RegressionList.__len__()
-        if currentRegressionListLength == 0:
-            entryToAdd.before = 0
-            entryToAdd.name = name
-            entryToAdd.next = 1
-        else:
-            entryToAdd.before = currentRegressionListLength
-            entryToAdd.name = name
-            entryToAdd.next = currentRegressionListLength + 1
+
+        entryToAdd.before = currentRegressionListLength
+        entryToAdd.name = name
+        entryToAdd.next = currentRegressionListLength + 1
         self.RegressionList.append(entryToAdd)
 
     def printOutList(self):
@@ -31,4 +27,5 @@ manager = ListManager()
 manager.addToList("bob")
 manager.addToList("shark")
 manager.addToList("Jam")
+manager.addToList("Potato")
 manager.printOutList()
