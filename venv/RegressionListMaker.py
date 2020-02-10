@@ -18,9 +18,7 @@ class ListManager:
 
     def printOutList(self):
         for unit in self.RegressionList:
-            print(unit.before)
-            print(unit.name)
-            print(unit.next)
+            print(str(unit.before) + " " + unit.name + " " + str(unit.next))
 
 class BuildEntry:
     def __init__(self):
