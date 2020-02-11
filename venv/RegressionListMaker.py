@@ -24,8 +24,19 @@ class ListManager:
 
     def insertIntoList(self, name, position):
         entryToInsert = BuildEntry()
-        currentRegressionListLength = self.RegressionList.__len__()
+        previousEntryPosition = position - 1
 
+        #Set entry's "before" to name of the previous entry.
+        entryToInsert.before = self.RegressionList[previousEntryPosition].name
+        #Set previous entry's "next" to current position.
+        self.RegressionList[previousEntryPosition].next = name
+        #Set next entry's "before" to name of entry to insert
+        self.RegressionList[position].before = name
+
+        entryToInsert.name = name
+        #Set current entry's "next" to next entry's name
+        entryToInsert.next = self.RegressionList[position].name
+        self.RegressionList.append(entryToInsert)
 
 class BuildEntry:
     def __init__(self):
@@ -39,4 +50,8 @@ manager.addToList("bob")
 manager.addToList("shark")
 manager.addToList("Jam")
 manager.addToList("Potato")
+manager.printOutList()
+
+manager.insertIntoList("couch",2)
+print("-------------------")
 manager.printOutList()
